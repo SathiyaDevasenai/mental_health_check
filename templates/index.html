@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Self-Check</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>🧠 Mental Health Self-Check</h1>
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required><br><br>
+        {% for i, q in questions %}
+            <div class="question">
+                <p><strong>Q{{ i+1 }}: {{ q.q }}</strong></p>
+                {% for opt in q.a %}
+                    <label><input type="radio" name="q{{ i }}" value="{{ opt }}" required> {{ opt }}</label><br>
+                {% endfor %}
+            </div><br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
